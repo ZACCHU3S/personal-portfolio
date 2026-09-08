@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zacchues Buntag — GoHighLevel Expert | Systems That Scale Agencies</title>
+<meta name="description" content="Zacchues Buntag, 21-year-old GoHighLevel expert. Funnels, CRM management, automations, email marketing, AI agents, webinars, Zapier, Wix and API integrations that scale agencies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@200;300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080c;
+  --bg2:#0c0e14;
+  --panel:#10131c;
+  --gold:#d4af37;
+  --gold-2:#f3d98b;
+  --gold-3:#9a7b1e;
+  --cream:#f5efe0;
+  --muted:#8b8f9c;
+  --line:rgba(212,175,55,.18);
+  --font-display:'Syne',sans-serif;
+  --font-serif:'Cormorant Garamond',serif;
+  --font-body:'Jost',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--cream);
+  font-family:var(--font-body);font-weight:300;
+  overflow-x:hidden;line-height:1.6;
+}
+::selection{background:var(--gold);color:#0a0a0a}
+::-webkit-scrollbar{width:9px}
+::-webkit-scrollbar-track{background:#0a0b10}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-3),var(--gold));border-radius:8px}
+
+/* ---------- PRELOADER ---------- */
+#preloader{
+  position:fixed;inset:0;z-index:1000;background:var(--bg);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  transition:opacity .8s ease,visibility .8s;
+}
+#preloader.hidden{opacity:0;visibility:hidden}
+#preloader.hidden .pre-seal{transform:scale(1.15)}
+.pre-seal{
+  position:relative;width:112px;height:112px;display:flex;align-items:center;justify-content:center;
+  transition:transform .8s cubic-bezier(.4,0,.2,1);
+}
+.pre-seal svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.pre-track{fill:none;stroke:rgba(255,255,255,.08);stroke-width:1.5}
+.pre-draw{
+  fill:none;stroke:var(--gold);stroke-width:1.5;stroke-linecap:round;
+  stroke-dasharray:352;stroke-dashoffset:352;
+  animation:drawRing 1.5s cubic-bezier(.4,0,.2,1) forwards;
+  filter:drop-shadow(0 0 6px rgba(212,175,55,.5));
+}
+@keyframes drawRing{to{stroke-dashoffset:0}}
+.pre-mono{
+  font-family:var(--font-serif);font-style:italic;font-size:2.4rem;color:var(--gold-2);
+  text-shadow:0 0 30px rgba(212,175,55,.35);
+  animation:monoIn 1s cubic-bezier(.2,.65,.3,1) both .25s;
+}
+@keyframes monoIn{from{opacity:0;transform:scale(1.6)}to{opacity:1;transform:scale(1)}}
+.pre-name{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:.04em}
+.pre-name .ltr{
+  display:inline-block;opacity:0;transform:translateY(18px) scale(.6);
+  animation:ltrIn .5s cubic-bezier(.2,.65,.3,1) forwards;
+  animation-delay:calc(.45s + var(--i)*.07s);
+}
+.pre-name .sp{width:.45em}
+@keyframes ltrIn{55%{opacity:1}100%{opacity:1;transform:none}}
+.pre-name{
+  font-family:var(--font-display);font-weight:800;letter-spacing:.35em;
+  font-size:clamp(1.1rem,3vw,1.8rem);text-transform:uppercase;color:var(--cream);
+}
+.pre-name span.ltr.g{color:var(--gold)}
+.pre-bar{width:min(280px,60vw);height:1px;background:rgba(255,255,255,.12);position:relative;overflow:hidden}
+.pre-bar::after{content:'';position:absolute;inset:0;width:40%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:slide 1.2s infinite}
+@keyframes slide{0%{left:-40%}100%{left:100%}}
+.pre-pct{font-size:.75rem;letter-spacing:.4em;color:var(--muted)}
+
+/* ---------- CUSTOM CURSOR ---------- */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:999;border-radius:50%;transform:translate(-50%,-50%)}
+.cursor-dot{width:6px;height:6px;background:var(--gold)}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(212,175,55,.5);transition:width .25s,height .25s,border-color .25s,background .25s}
+.cursor-ring.hovering{width:64px;height:64px;background:rgba(212,175,55,.08);border-color:var(--gold)}
+@media (hover:none){.cursor-dot,.cursor-ring{display:none}}
+
+/* ---------- GOLD DUST CANVAS ---------- */
+#dust{position:fixed;inset:0;z-index:1;pointer-events:none}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px clamp(20px,6vw,80px);
+  transition:background .4s,padding .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{background:rgba(7,8,12,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:14px clamp(20px,6vw,80px);border-bottom-color:var(--line)}
+.logo{font-family:var(--font-display);font-weight:800;font-size:1.15rem;letter-spacing:.18em;color:var(--cream);text-decoration:none}
+.logo em{font-style:normal;color:var(--gold)}
+.nav-links{display:flex;gap:38px;list-style:none}
+.nav-links a{
+  color:var(--muted);text-decoration:none;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+  position:relative;transition:color .3s;
+}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .35s}
+.nav-links a:hover{color:var(--cream)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  border:1px solid var(--gold);color:var(--gold);padding:10px 26px;font-size:.75rem;
+  letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:.35s;font-family:var(--font-body);
+}
+.nav-cta:hover{background:var(--gold);color:#0a0a0a;box-shadow:0 0 30px rgba(212,175,55,.35)}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:6px}
+.burger span{width:26px;height:1.5px;background:var(--gold);transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;min-height:100svh;display:flex;align-items:center;position:relative;
+  padding:120px clamp(20px,7vw,100px) 60px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 75% 30%,rgba(212,175,55,.10),transparent 60%),
+    radial-gradient(ellipse 45% 40% at 15% 80%,rgba(212,175,55,.06),transparent 60%),
+    var(--bg);
+}
+.hero-grid{
+  position:absolute;inset:0;z-index:0;opacity:.5;
+  background-image:linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px);
+  background-size:70px 70px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%,#000 30%,transparent 75%);
+}
+.hero-inner{position:relative;z-index:2;max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:start}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;font-size:.75rem;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--gold);border:1px solid var(--line);
+  padding:10px 20px;border-radius:100px;margin-bottom:34px;background:rgba(212,175,55,.05);
+}
+.hero-eyebrow .pulse{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.5)}50%{box-shadow:0 0 0 8px rgba(212,175,55,0)}}
+.hero h1{
+  font-family:var(--font-serif);font-weight:500;
+  font-size:clamp(2.6rem,6.2vw,5.2rem);line-height:1.06;margin-bottom:10px;
+}
+.hero h1 .italic{font-style:italic;color:var(--gold-2)}
+.hero h2{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(1.5rem,3.6vw,2.9rem);letter-spacing:.02em;line-height:1.1;margin-bottom:28px;
+}
+.hero h2 .outline{
+  color:transparent;-webkit-text-stroke:1.5px var(--gold);
+}
+.hero-sub{max-width:560px;color:var(--muted);font-size:1.05rem;margin-bottom:40px;font-weight:300}
+.hero-sub strong{color:var(--cream);font-weight:500}
+.hero-actions{display:flex;gap:20px;flex-wrap:wrap;align-items:center}
+.btn-gold{
+  position:relative;display:inline-flex;align-items:center;gap:12px;
+  background:linear-gradient(135deg,var(--gold-2),var(--gold),var(--gold-3));
+  color:#0a0a0a;padding:17px 38px;font-weight:600;font-size:.85rem;letter-spacing:.18em;
+  text-transform:uppercase;text-decoration:none;overflow:hidden;transition:transform .3s,box-shadow .3s;
+  font-family:var(--font-body);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(212,175,55,.35)}
+.btn-gold::after{content:'';position:absolute;top:0;left:-80%;width:60%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);transition:left .6s}
+.btn-gold:hover::after{left:120%}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:10px;color:var(--cream);
+  border:1px solid rgba(255,255,255,.2);padding:16px 34px;font-size:.82rem;letter-spacing:.18em;
+  text-transform:uppercase;text-decoration:none;transition:.35s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-ghost svg{width:18px;height:18px;flex:none}
+.hero-stats{display:flex;gap:0;margin-top:64px;border-top:1px solid var(--line);padding-top:34px;flex-wrap:wrap}
+.stat{padding-right:44px;margin-right:44px;border-right:1px solid var(--line)}
+.stat:last-child{border:none;margin:0;padding:0}
+.stat-num{font-family:var(--font-display);font-weight:800;font-size:clamp(1.7rem,3vw,2.5rem);color:var(--gold-2)}
+.stat-num small{font-size:.6em;vertical-align:top}
+.stat-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* portrait card */
+.portrait-wrap{position:relative;display:flex;justify-content:center;align-items:flex-start;align-self:start;margin-top:clamp(110px,12vw,162px)}
+.portrait{
+  position:relative;height:min(533px,64vh);max-width:80vw;aspect-ratio:3/4;
+  background:linear-gradient(160deg,#141824,#0b0d13);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  transform-style:preserve-3d;transition:transform .2s ease-out;
+  box-shadow:0 40px 80px rgba(0,0,0,.55);
+}
+.portrait::before{
+  content:'';position:absolute;inset:-1px;z-index:-1;
+  background:linear-gradient(135deg,var(--gold),transparent 40%,transparent 60%,var(--gold));
+  opacity:.55;
+}
+.portrait-img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+  filter:saturate(.92) contrast(1.04);
+}
+.portrait-tag{
+  position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+  background:rgba(10,11,16,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);
+  padding:10px 22px;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-2);white-space:nowrap;
+}
+.float-chip{
+  position:absolute;background:rgba(13,15,22,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border:1px solid var(--line);padding:12px 18px;font-size:.72rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--cream);display:flex;align-items:center;gap:10px;
+  animation:float 5s ease-in-out infinite;
+}
+.float-chip .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.chip-1{top:8%;left:-14%}
+.chip-2{bottom:26%;right:-16%;animation-delay:1.4s}
+.chip-3{top:42%;left:-20%;animation-delay:2.6s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.scroll-hint{
+  position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:3;
+  display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);
+  font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;
+}
+.scroll-hint .line{width:1px;height:52px;background:linear-gradient(var(--gold),transparent);animation:drip 2s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative;padding:130px clamp(20px,7vw,100px)}
+.container{max-width:1300px;margin:0 auto}
+.sec-head{margin-bottom:70px}
+.sec-tag{
+  display:inline-flex;align-items:center;gap:14px;font-size:.72rem;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:20px;
+}
+.sec-tag::before{content:'';width:44px;height:1px;background:var(--gold)}
+.sec-title{
+  font-family:var(--font-serif);font-weight:500;font-size:clamp(2.2rem,4.6vw,3.8rem);
+  line-height:1.1;
+}
+.sec-title .italic{font-style:italic;color:var(--gold-2)}
+.sec-desc{color:var(--muted);max-width:560px;margin-top:18px}
+
+/* about */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start}
+.about-visual{position:relative}
+.about-frame{
+  border:1px solid var(--line);padding:26px;position:relative;background:var(--panel);
+}
+.about-frame::before,.about-frame::after{content:'';position:absolute;width:56px;height:56px;border-color:var(--gold);border-style:solid}
+.about-frame::before{top:-1px;left:-1px;border-width:2px 0 0 2px}
+.about-frame::after{bottom:-1px;right:-1px;border-width:0 2px 2px 0}
+.about-num{
+  font-family:var(--font-serif);font-style:italic;font-size:clamp(4rem,9vw,8rem);
+  color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.5);line-height:1;
+}
+.about-frame p{color:var(--muted);margin-top:14px;font-size:1rem}
+.about-bg{margin-top:26px;border-top:1px solid var(--line);padding-top:8px}
+.bg-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:baseline}
+.bg-row:last-child{border-bottom:none}
+.bg-label{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.bg-val{font-size:.92rem;color:var(--muted)}
+.about-quote{
+  margin-top:34px;padding:26px;border-left:2px solid var(--gold);background:rgba(212,175,55,.05);
+  font-family:var(--font-serif);font-style:italic;font-size:1.3rem;color:var(--cream);line-height:1.5;
+}
+.about-quote cite{display:block;margin-top:12px;font-family:var(--font-body);font-style:normal;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.timeline{list-style:none}
+.timeline li{
+  display:grid;grid-template-columns:130px 1fr;gap:26px;padding:26px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);transition:background .3s,padding-left .3s;
+}
+.timeline li:hover{background:rgba(212,175,55,.03);padding-left:10px}
+.tl-year{font-family:var(--font-display);font-weight:700;color:var(--gold);font-size:.95rem;letter-spacing:.1em}
+.tl-role{font-family:var(--font-serif);font-size:1.35rem;color:var(--cream)}
+.tl-desc{color:var(--muted);font-size:.95rem;margin-top:4px}
+
+/* services */
+.svc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.svc{
+  position:relative;background:var(--panel);border:1px solid rgba(255,255,255,.07);
+  padding:32px 22px;overflow:hidden;transition:transform .4s,border-color .4s,box-shadow .4s;
+}
+.svc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s;
+}
+.svc:hover{transform:translateY(-8px);border-color:var(--line);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.svc:hover::before{transform:scaleX(1)}
+.svc-num{
+  font-family:var(--font-serif);font-style:italic;font-size:2.5rem;
+  color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.45);line-height:1;margin-bottom:16px;
+}
+.svc h3{font-family:var(--font-serif);font-size:1.28rem;font-weight:600;margin-bottom:12px}
+.svc p{color:var(--muted);font-size:.88rem;margin-bottom:16px}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.svc li{font-size:.8rem;color:#c9cdd8;display:flex;gap:9px;align-items:flex-start}
+.svc li::before{content:'◆';color:var(--gold);font-size:.6rem;margin-top:6px}
+
+/* tools strip */
+.stack-strip{margin-top:70px;border-top:1px solid var(--line);padding-top:44px;display:flex;flex-direction:column;gap:24px;align-items:center;text-align:center}
+.stack-label{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.stack-chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.stack-chips span{
+  border:1px solid rgba(255,255,255,.12);padding:9px 20px;border-radius:100px;
+  font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:#c9cdd8;
+  transition:.3s;background:rgba(255,255,255,.02);cursor:default;
+}
+.stack-chips span:hover{border-color:var(--gold);color:var(--gold-2);transform:translateY(-2px)}
+
+/* work gallery */
+#work{background:linear-gradient(180deg,rgba(212,175,55,.04),transparent 45%),var(--bg)}
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.work-card{background:var(--panel);border:1px solid rgba(255,255,255,.07);overflow:hidden;transition:transform .4s,border-color .4s,box-shadow .4s;display:block;text-decoration:none;color:inherit}
+.work-card:hover{transform:translateY(-8px);border-color:var(--line);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.work-shot{position:relative;aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:#0b0d13}
+.work-shot img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .6s ease}
+.work-card:hover .work-shot img{transform:scale(1.05)}
+.work-shot::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(7,8,12,.5));pointer-events:none}
+.work-info{padding:22px 22px 26px}
+.work-type{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.work-info h3{font-family:var(--font-serif);font-size:1.25rem;font-weight:600;margin:10px 0 8px}
+.work-info p{color:var(--muted);font-size:.87rem}
+.work-view{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);transition:gap .3s,color .3s}
+.work-card:hover .work-view{gap:14px;color:var(--gold-2)}
+
+/* results */
+#results{background:var(--bg2)}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;margin-bottom:90px}
+.result-card{
+  background:var(--panel);border:1px solid rgba(255,255,255,.07);padding:44px 34px;text-align:center;
+  transition:.4s;position:relative;overflow:hidden;
+}
+.result-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.result-card .r-num{
+  font-family:var(--font-display);font-weight:800;font-size:clamp(1.9rem,3.2vw,2.8rem);
+  background:linear-gradient(135deg,var(--gold-2),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.2;
+  white-space:nowrap;
+}
+.result-card .r-label{margin-top:14px;font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.case{
+  display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;
+  border:1px solid rgba(255,255,255,.07);background:var(--panel);padding:38px 42px;margin-bottom:24px;
+  transition:border-color .4s,transform .4s;
+}
+.case:hover{border-color:var(--line);transform:translateX(8px)}
+.case-metric{
+  font-family:var(--font-display);font-weight:700;font-size:.95rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold-2);min-width:200px;border-right:1px solid var(--line);padding-right:34px;
+  display:flex;align-items:center;
+}
+.case h4{font-family:var(--font-serif);font-size:1.4rem;margin-bottom:8px}
+.case p{color:var(--muted);font-size:.95rem;max-width:640px}
+
+/* process */
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px;counter-reset:step}
+.step{position:relative;padding:38px 30px;border:1px solid rgba(255,255,255,.07);background:var(--panel);transition:.4s}
+.step:hover{border-color:var(--line);transform:translateY(-6px)}
+.step::before{
+  counter-increment:step;content:'0' counter(step);
+  font-family:var(--font-serif);font-style:italic;font-size:2.6rem;
+  color:transparent;-webkit-text-stroke:1px rgba(212,175,55,.5);
+}
+.step h4{font-family:var(--font-serif);font-size:1.3rem;margin:18px 0 10px}
+.step p{color:var(--muted);font-size:.92rem}
+
+/* testimonials */
+.tst-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.tst{
+  background:var(--panel);border:1px solid rgba(255,255,255,.07);padding:34px 26px;position:relative;transition:.4s;
+  display:flex;flex-direction:column;
+}
+.tst:hover{border-color:var(--line);transform:translateY(-6px)}
+.tst .mark{font-family:var(--font-serif);font-size:3.2rem;line-height:.6;color:rgba(212,175,55,.35);margin-bottom:14px}
+.tst p{font-family:var(--font-serif);font-size:1.02rem;font-style:italic;color:#e8e2d2;line-height:1.6;margin-bottom:24px;flex:1}
+.tst-who{display:flex;align-items:center;gap:14px}
+.tst-avatar{
+  width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--gold-3),var(--gold));color:#0a0a0a;font-weight:600;font-family:var(--font-display);
+}
+.tst-who b{display:block;font-weight:500;font-size:.95rem;color:var(--cream)}
+.tst-who span{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.stars{color:var(--gold);letter-spacing:4px;margin-bottom:16px;font-size:.9rem}
+
+/* contact */
+#contact{background:
+  radial-gradient(ellipse 55% 45% at 50% 0%,rgba(212,175,55,.09),transparent 65%),var(--bg2)}
+.contact-wrap{max-width:860px;margin:0 auto;text-align:center}
+.contact-wrap .sec-title{margin-bottom:22px}
+.contact-wrap p.lede{color:var(--muted);max-width:600px;margin:0 auto 44px}
+.contact-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.contact-meta{display:flex;gap:0;justify-content:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:40px}
+.cm{padding:0 44px;border-right:1px solid var(--line)}
+.cm:last-child{border:none}
+.cm span{display:block;font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.cm a,.cm b{color:var(--cream);text-decoration:none;font-weight:400;font-size:1.02rem}
+.cm a:hover{color:var(--gold)}
+
+/* footer */
+footer{
+  padding:34px clamp(20px,7vw,100px);border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+footer .gold{color:var(--gold)}
+
+/* reveal animations */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .9s cubic-bezier(.2,.65,.3,1),transform .9s cubic-bezier(.2,.65,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
+
+/* toast */
+#toast{
+  position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:var(--panel);border:1px solid var(--gold);color:var(--cream);
+  padding:15px 30px;font-size:.82rem;letter-spacing:.12em;z-index:500;opacity:0;transition:.45s;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* marquee */
+.marquee{
+  overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:22px 0;background:rgba(212,175,55,.03);
+}
+.marquee-track{display:flex;gap:70px;width:max-content;animation:scrollx 30s linear infinite}
+.marquee span{
+  font-family:var(--font-serif);font-style:italic;font-size:1.35rem;color:rgba(245,239,224,.55);
+  display:flex;align-items:center;gap:70px;white-space:nowrap;
+}
+.marquee span::after{content:'◆';color:var(--gold);font-size:.7rem}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+
+/* responsive */
+@media (max-width:1200px){
+  .svc-grid,.tst-grid,.work-grid{grid-template-columns:repeat(2,1fr)}
+  .svc{padding:36px 28px}
+  .tst{padding:38px 30px}
+}
+@media (max-width:640px){
+  .svc-grid,.tst-grid,.work-grid{grid-template-columns:1fr}
+  .case-metric{min-width:0}
+  section{padding:84px 18px}
+  .sec-head{margin-bottom:48px}
+  .hero{padding:104px 18px 56px}
+  .hero-actions{flex-direction:column;align-items:stretch}
+  .btn-gold,.btn-ghost{width:100%;justify-content:center;padding:15px 22px;font-size:.78rem;letter-spacing:.12em}
+  .hero-stats{gap:22px 16px;padding-top:26px;margin-top:44px}
+  .stat-num{font-size:1.6rem}
+  .timeline li{grid-template-columns:1fr;gap:5px;padding:20px 0}
+  .tl-role{font-size:1.2rem}
+  .bg-row{grid-template-columns:1fr;gap:2px;padding:9px 0}
+  .about-frame{padding:20px 16px}
+  .about-quote{font-size:1.12rem;padding:20px 16px}
+  .case{padding:26px 20px}
+  .case h4{font-size:1.18rem}
+  .tst{padding:30px 22px}
+  .tst p{font-size:1rem}
+  .svc{padding:30px 20px}
+  .work-info{padding:20px 18px 24px}
+  .cm{padding:0;border:none}
+  .contact-meta{flex-direction:column;align-items:center;gap:20px;padding-top:30px;text-align:center}
+  .marquee-track{gap:44px}
+  .marquee span{gap:44px;font-size:1.12rem}
+  .scroll-hint{display:none}
+  footer{justify-content:center;text-align:center;padding:28px 18px}
+  .pre-seal{width:92px;height:92px}
+  .pre-mono{font-size:1.9rem}
+}
+@media (max-width:380px){
+  .hero h1{font-size:2.2rem}
+  .hero h2{font-size:1.3rem}
+  .stat-num{font-size:1.4rem}
+  .sec-title{font-size:1.9rem}
+  .pre-name{font-size:1rem}
+}
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:70px}
+  .portrait-wrap{order:-1;margin-top:0}
+  .portrait{height:auto;width:min(340px,78vw)}
+  .about-grid{grid-template-columns:1fr;gap:50px}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:flex}
+  .chip-1,.chip-2,.chip-3{display:none}
+  .case{grid-template-columns:1fr;gap:14px}
+  .case-metric{border:none;padding:0}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:28px 24px}
+  .stat{border:none;padding:0;margin:0}
+  section{padding:100px clamp(20px,6vw,100px)}
+}
+.mobile-menu{
+  position:fixed;inset:0;z-index:99;background:rgba(7,8,12,.97);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;
+  opacity:0;visibility:hidden;transition:.4s;
+}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu a{color:var(--cream);text-decoration:none;font-family:var(--font-serif);font-size:1.9rem}
+.mobile-menu a:hover{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="pre-seal">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle class="pre-track" cx="60" cy="60" r="56"/>
+      <circle class="pre-draw" cx="60" cy="60" r="56"/>
+    </svg>
+    <div class="pre-mono">ZB</div>
+  </div>
+  <div class="pre-name" aria-label="Zacchues Buntag"><span class="ltr" style="--i:0">Z</span><span class="ltr" style="--i:1">A</span><span class="ltr" style="--i:2">C</span><span class="ltr" style="--i:3">C</span><span class="ltr" style="--i:4">H</span><span class="ltr" style="--i:5">U</span><span class="ltr" style="--i:6">E</span><span class="ltr" style="--i:7">S</span><span class="sp"></span><span class="ltr g" style="--i:8">B</span><span class="ltr g" style="--i:9">U</span><span class="ltr g" style="--i:10">N</span><span class="ltr g" style="--i:11">T</span><span class="ltr g" style="--i:12">A</span><span class="ltr g" style="--i:13">G</span></div>
+  <div class="pre-bar"></div>
+  <div class="pre-pct" id="prePct">0%</div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+
+<!-- Gold dust -->
+<canvas id="dust"></canvas>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="#top" class="logo">Z<em>.</em>BUNTAG</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+  </ul>
+  <a href="https://wa.me/639095717109" target="_blank" rel="noopener" class="nav-cta">Call Now</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a><a href="#services">Services</a><a href="#work">Work</a><a href="#results">Results</a>
+  <a href="#process">Process</a><a href="#testimonials">Testimonials</a><a href="https://wa.me/639095717109" target="_blank" rel="noopener">Call Now or Message</a>
+</div>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="pulse"></span> Available for New Projects — 2026</div>
+      <h1>Hi, I'm Zacchues —<br><span class="italic">the GoHighLevel expert</span></h1>
+      <h2>agencies hire to <span class="outline">scale their systems.</span></h2>
+      <p class="hero-sub">
+        I'm <strong>Zacchues Buntag</strong>, a 21-year-old GoHighLevel specialist who builds
+        <strong>high-converting funnels, CRM systems, automations, AI agents, and integrations</strong>
+        that turn agency chaos into predictable, recurring revenue.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/639095717109" target="_blank" rel="noopener" class="btn-gold">Call Now or Message</a>
+        <a href="https://www.instagram.com/zacchu3s.hims3lf/" target="_blank" rel="noopener" class="btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @zacchu3s.hims3lf</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num"><small>+</small><span class="count" data-target="40">0</span></div><div class="stat-label">Funnels Launched</div></div>
+        <div class="stat"><div class="stat-num"><small>+</small><span class="count" data-target="120">0</span></div><div class="stat-label">Automations Built</div></div>
+        <div class="stat"><div class="stat-num"><span class="count" data-target="98">0</span><small>%</small></div><div class="stat-label">Client Retention</div></div>
+        <div class="stat"><div class="stat-num"><span class="count" data-target="5">0</span><small>mo+</small></div><div class="stat-label">Intensive GHL Experience</div></div>
+      </div>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait" id="portrait">
+        <img class="portrait-img" src="https://cdn.phototourl.com/free/2026-09-08-45a6451d-5111-4cec-a191-34d37380aece.jpg" alt="Zacchues Buntag — GoHighLevel Expert" loading="eager">
+        <div class="portrait-tag">Zacchues Buntag · GHL Expert</div>
+      </div>
+      <div class="float-chip chip-1"><span class="dot"></span> Funnels</div>
+      <div class="float-chip chip-2"><span class="dot"></span> Automations</div>
+      <div class="float-chip chip-3"><span class="dot"></span> CRM Management · IDX &amp; MLS</div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="line"></div></div>
+</header>
+
+<!-- Marquee -->
+<div class="marquee">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>GoHighLevel</span><span>Funnel Building</span><span>CRM Management</span><span>Workflow Automation</span>
+    <span>Email Marketing</span><span>AI Agents</span><span>Webinar Systems</span><span>Contracts &amp; E-Sign</span>
+    <span>Zapier</span><span>Wix</span><span>API Integration</span><span>White-Label SaaS</span>
+  </div>
+</div>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">About Me</div>
+      <h2 class="sec-title">Young age. <span class="italic">Elite systems.</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-frame">
+          <div class="about-num">21</div>
+          <p>
+            Born <strong style="color:var(--cream)">November 17, 2004</strong> — I grew up inside the
+            creator economy, not the corporate one. I started with GoHighLevel in <strong style="color:var(--cream)">April 2026</strong>
+            and fast-tracked to expert through intensive GHL training and real agency outsourcing work —
+            building pipelines, workflows, and snapshots for actual clients instead of practicing on dummy accounts.
+          </p>
+          <p style="margin-top:14px">
+            Today I run GHL systems end-to-end: funnel architecture, database reactivation,
+            AI booking bots, and reporting dashboards that owners actually look at.
+          </p>
+          <div class="about-bg">
+            <div class="bg-row"><span class="bg-label">From</span><span class="bg-val">Tagum City, Davao Del Norte, Philippines</span></div>
+            <div class="bg-row"><span class="bg-label">Elementary</span><span class="bg-val">Magugpo Pilot Central Elementary School</span></div>
+            <div class="bg-row"><span class="bg-label">Junior High</span><span class="bg-val">Tagum City National High School</span></div>
+            <div class="bg-row"><span class="bg-label">Senior High</span><span class="bg-val">Tagum National Trade School</span></div>
+            <div class="bg-row"><span class="bg-label">College</span><span class="bg-val">University of Southeastern Philippines — Animal Science (undergrad)</span></div>
+          </div>
+          <div class="about-quote">
+            “I don't sell software. I sell the 10 extra hours a week you get back — and the revenue that shows up while you sleep.”
+            <cite>— Zacchues Buntag</cite>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-d1">
+        <ul class="timeline">
+            <li><div class="tl-year">Apr 2026</div><div><div class="tl-role">GoHighLevel Deep-Dive Training</div><div class="tl-desc">Went all-in on GHL — funnels, workflows, pipelines, snapshots, and automations through intensive hands-on training.</div></div></li>
+            <li><div class="tl-year">2026</div><div><div class="tl-role">Agency Outsourcing Work</div><div class="tl-desc">Built and managed funnels, automations, and CRM systems for real agency clients as an outsourced GHL specialist — learning by shipping.</div></div></li>
+            <li><div class="tl-year">Now</div><div><div class="tl-role">Full-Stack GHL Systems Builder</div><div class="tl-desc">Running GHL systems end-to-end: funnels, long-term nurture, booking &amp; webinar automations, AI agents, and IDX/MLS handling.</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">What I Do</div>
+      <h2 class="sec-title">Services built to make <span class="italic">agencies money.</span></h2>
+      <p class="sec-desc">Every engagement is scoped around one thing: measurable ROI — inside GoHighLevel and across your entire stack.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc reveal">
+        <div class="svc-num">01</div>
+        <h3>GHL Setup &amp; Snapshots</h3>
+        <p>Done-for-you sub-account builds, branded pipelines, calendars, and reusable snapshot architecture.</p>
+        <ul>
+          <li>Full sub-account configuration</li>
+          <li>Industry snapshot libraries</li>
+          <li>Pipeline &amp; stage automation</li>
+          <li>Team roles &amp; permissions</li>
+        </ul>
+      </div>
+      <div class="svc reveal reveal-d1">
+        <div class="svc-num">02</div>
+        <h3>High-Converting Funnels</h3>
+        <p>Funnels designed around buyer psychology — VSLs, applications, webinars, and upsell flows.</p>
+        <ul>
+          <li>Application &amp; high-ticket funnels</li>
+          <li>Webinar &amp; VSL frameworks</li>
+          <li>Booking calendar optimization</li>
+          <li>A/B tested copy structure</li>
+        </ul>
+      </div>
+      <div class="svc reveal reveal-d2">
+        <div class="svc-num">03</div>
+        <h3>Automations &amp; AI Agents</h3>
+        <p>End-to-end GHL automations that respond in seconds, book appointments, and nurture leads for the long haul — while your team sleeps.</p>
+        <ul>
+          <li>Long-term nurture &amp; lead management</li>
+          <li>Booking &amp; appointment automation</li>
+          <li>Form &amp; survey automations</li>
+          <li>Webinar registration &amp; replay automations</li>
+          <li>AI agents &amp; chat widget automation</li>
+          <li>Social media auto-reply automation</li>
+        </ul>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">04</div>
+        <h3>Dashboards &amp; Reporting</h3>
+        <p>Custom reporting so owners see exactly what every dollar and every workflow produces.</p>
+        <ul>
+          <li>Attribution &amp; source tracking</li>
+          <li>Custom KPI dashboards</li>
+          <li>Ad spend → booked call reporting</li>
+          <li>Weekly automated summaries</li>
+        </ul>
+      </div>
+      <div class="svc reveal reveal-d1">
+        <div class="svc-num">05</div>
+        <h3>Ongoing GHL Management</h3>
+        <p>A fractional GHL operator on retainer — audits, fixes, and continuous optimization.</p>
+        <ul>
+          <li>Monthly system audits</li>
+          <li>Workflow debugging &amp; rebuilds</li>
+          <li>New campaign launches</li>
+          <li>Priority Slack support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work -->
+<section id="work">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">My Work</div>
+      <h2 class="sec-title">Funnels &amp; websites <span class="italic">I've built.</span></h2>
+      <p class="sec-desc">Real projects shipped for clients — pages designed around one goal: turning visitors into booked calls.</p>
+    </div>
+    <div class="work-grid">
+      <a class="work-card reveal" href="https://sites.leadconnectorhq.com/preview/8fzBWmr9HF72YqLwrHrT?notrack=true" target="_blank" rel="noopener">
+        <div class="work-shot"><img src="https://cdn.phototourl.com/free/2026-09-08-3b0dd51f-5e3d-4e58-b90f-e15d972dac56.png" alt="CMG Solutions webinar funnel built in GoHighLevel" loading="lazy"></div>
+        <div class="work-info">
+          <span class="work-type">GHL Webinar Funnel</span>
+          <h3>CMG Solutions</h3>
+          <p>Live webinar registration funnel for a government-contracting mentorship — ticket capture, speaker authority sections, and automated follow-up built in GoHighLevel.</p>
+          <span class="work-view">View Live ↗</span>
+        </div>
+      </a>
+      <a class="work-card reveal reveal-d1" href="https://www.thevirtualnpacademy.com/landing-page" target="_blank" rel="noopener">
+        <div class="work-shot"><img src="https://cdn.phototourl.com/free/2026-09-08-f642715f-d19f-4ac4-aead-0846ad7f8ab9.png" alt="The Virtual NP Academy masterclass landing page" loading="lazy"></div>
+        <div class="work-info">
+          <span class="work-type">Masterclass Landing Page</span>
+          <h3>The Virtual NP Academy</h3>
+          <p>High-converting masterclass page for a nurse-practitioner coaching program — VSL hook, testimonial proof wall, and instructor authority section driving registrations.</p>
+          <span class="work-view">View Live ↗</span>
+        </div>
+      </a>
+      <a class="work-card reveal reveal-d2" href="https://prepare-2-win.com/" target="_blank" rel="noopener">
+        <div class="work-shot"><img src="https://cdn.phototourl.com/free/2026-09-08-c9a0f67b-d2cd-4a31-ade8-d401378d4487.png" alt="Cherneva Thomas Realty real estate website" loading="lazy"></div>
+        <div class="work-info">
+          <span class="work-type">Website</span>
+          <h3>Cherneva Thomas Realty</h3>
+          <p>Full real estate website for a Texas &amp; Louisiana REALTOR® — live MLS listings, service pages, lead-magnet downloads, and booking built to win consultations.</p>
+          <span class="work-view">View Live ↗</span>
+        </div>
+      </a>
+      <a class="work-card reveal reveal-d3" href="https://prepare-2-win.com/registration-page" target="_blank" rel="noopener">
+        <div class="work-shot"><img src="https://cdn.phototourl.com/free/2026-09-08-2872b38b-e7a6-4a37-8bcb-773e13c6ed49.png" alt="Prepare 2 Win webinar registration page" loading="lazy"></div>
+        <div class="work-info">
+          <span class="work-type">GHL Webinar Funnel</span>
+          <h3>Prepare 2 Win</h3>
+          <p>Webinar registration funnel for Cherneva Thomas's free live training on financial readiness for property ownership — seat capture, host authority, and client proof sections.</p>
+          <span class="work-view">View Live ↗</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<section id="results">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Proof of Work</div>
+      <h2 class="sec-title">Numbers clients <span class="italic">actually feel.</span></h2>
+    </div>
+    <div class="results-grid">
+      <div class="result-card reveal"><div class="r-num"><span class="count" data-target="47">0</span>%</div><div class="r-label">Avg. Show-Rate Lift</div></div>
+      <div class="result-card reveal reveal-d1"><div class="r-num"><span class="count" data-target="3">0</span>.2x</div><div class="r-label">Faster Speed-to-Lead</div></div>
+      <div class="result-card reveal reveal-d2"><div class="r-num">$<span class="count" data-target="2">0</span>.4M</div><div class="r-label">Client Pipeline Generated</div></div>
+      <div class="result-card reveal reveal-d3"><div class="r-num"><span class="count" data-target="31">0</span>hr</div><div class="r-label">Saved Weekly Per Team</div></div>
+    </div>
+    <div class="case reveal">
+      <div class="case-metric">Real Estate</div>
+      <div><h4>Cherneva Thomas Realty — Website, IDX/MLS &amp; Webinar System</h4><p>Built the full client website with live MLS listings, then a "Prepare 2 Win" webinar registration funnel on top — with booking, reminder, and long-term nurture automations running the follow-up end-to-end.</p></div>
+    </div>
+    <div class="case reveal">
+      <div class="case-metric">Nurse Practitioner</div>
+      <div><h4>The Virtual NP Academy — Masterclass Funnel &amp; Automations</h4><p>High-converting masterclass landing page for Dr. Ebony Tillery's NP program, wired with registration, form, and webinar automations plus AI chat follow-up to move nurses from signup to enrollment.</p></div>
+    </div>
+    <div class="case reveal">
+      <div class="case-metric">Mentorship</div>
+      <div><h4>CMG Solutions — Government Contracting Webinar Funnel</h4><p>Live webinar funnel for a government-contracting mentorship: registration capture, speaker authority sections, and automated confirmation + reminder sequences so no registrant slips through.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section id="process">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">How We Work</div>
+      <h2 class="sec-title">A process with <span class="italic">zero guesswork.</span></h2>
+    </div>
+    <div class="process-grid">
+      <div class="step reveal"><h4>Deep Audit</h4><p>I map your current GHL account, funnels, and follow-up — then show you exactly where revenue is leaking.</p></div>
+      <div class="step reveal reveal-d1"><h4>System Blueprint</h4><p>You get a visual build plan: funnels, workflows, AI agents, and pipelines — scoped with timelines.</p></div>
+      <div class="step reveal reveal-d2"><h4>Build &amp; Integrate</h4><p>I build everything inside your GHL account, connect integrations, and stress-test every automation.</p></div>
+      <div class="step reveal reveal-d3"><h4>Optimize &amp; Scale</h4><p>Weekly data reviews, A/B tests, and new automations — your system compounds month after month.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section id="testimonials" style="background:var(--bg2)">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Client Words</div>
+      <h2 class="sec-title">Trusted by CEOs <span class="italic">who hate chaos.</span></h2>
+      <p class="sec-desc">I'm only months into my career — and I didn't warm up on small clients. My first projects were for big-timers: an 8-figure CEO and mentor, a founder who's guided 1,000+ nurse practitioners, and a CEO running transactions across markets. Beginners usually start small — I built for big names from day one.</p>
+    </div>
+    <div class="tst-grid">
+      <div class="tst reveal">
+        <div class="stars">★★★★★</div>
+        <div class="mark">“</div>
+        <p>Zacchues rebuilt our entire GHL backend in two weeks. Our show rate jumped 40% and my team finally stopped chasing leads manually. He's 21 and outworks people twice his age.</p>
+        <div class="tst-who"><div class="tst-avatar">DC</div><div><b>Dion Coopwood</b><span>CEO, Dominate the Decade</span></div></div>
+      </div>
+      <div class="tst reveal reveal-d1">
+        <div class="stars">★★★★★</div>
+        <div class="mark">“</div>
+        <p>The AI follow-up system he built books appointments while we sleep. We added $18k in reactivated revenue in the first month. Best money we've spent on ops, period.</p>
+        <div class="tst-who"><div class="tst-avatar">ET</div><div><b>Ebony Tillery</b><span>CEO, The Virtual NP</span></div></div>
+      </div>
+      <div class="tst reveal reveal-d2">
+        <div class="stars">★★★★★</div>
+        <div class="mark">“</div>
+        <p>He took my real estate business and turned it into a system that works while I'm showing homes — the website, the MLS listings, the follow-up, the booking. Clients reach out and everything just moves. I finally feel like a top-producing team of one.</p>
+        <div class="tst-who"><div class="tst-avatar">CT</div><div><b>Cherneva Thomas</b><span>Texas &amp; Louisiana REALTOR®</span></div></div>
+      </div>
+      <div class="tst reveal reveal-d3">
+        <div class="stars">★★★★★</div>
+        <div class="mark">“</div>
+        <p>Zacchues set up our transaction coordination process inside GoHighLevel — pipelines, automations, and client updates that run without me touching them. Nothing slips through anymore and my team closes deals faster.</p>
+        <div class="tst-who"><div class="tst-avatar">AW</div><div><b>Ashley Williams</b><span>CEO, Top Tier Transactions</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container contact-wrap">
+    <div class="sec-head reveal" style="margin-bottom:0">
+      <div class="sec-tag" style="justify-content:center">Let's Talk</div>
+      <h2 class="sec-title">Ready to build your <span class="italic">revenue engine?</span></h2>
+      <p class="lede">Call or message me directly — we'll talk about your current setup and the fastest path to a GHL system that sells for you.</p>
+    </div>
+    <div class="contact-actions reveal">
+      <a href="https://wa.me/639095717109" target="_blank" rel="noopener" class="btn-gold">Call Now or Message</a>
+      <a href="https://www.instagram.com/zacchu3s.hims3lf/" target="_blank" rel="noopener" class="btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @zacchu3s.hims3lf</a>
+    </div>
+    <div class="contact-meta reveal">
+      <div class="cm"><span>WhatsApp</span><a href="https://wa.me/639095717109" target="_blank" rel="noopener">Message on WhatsApp</a></div>
+      <div class="cm"><span>Phone</span><a href="tel:+639095717109">0909 571 7109</a></div>
+      <div class="cm"><span>Email</span><a href="mailto:zak3chaz@gmail.com">zak3chaz@gmail.com</a></div>
+      <div class="cm"><span>Location</span><b>Remote — Worldwide</b></div>
+      <div class="cm"><span>Response Time</span><b>Within 24 hours</b></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 <span class="gold">Zacchues Buntag</span> — GoHighLevel Expert</div>
+  <div>Built with precision · <span class="gold">Systems &gt; Hustle</span></div>
+</footer>
+
+<div id="toast"></div>
+
+<script>
+/* ---------- Preloader ---------- */
+(function(){
+  const pre=document.getElementById('preloader'),pct=document.getElementById('prePct');
+  let p=0;
+  const t=setInterval(()=>{
+    p=Math.min(100,p+Math.random()*9+2);
+    pct.textContent=Math.floor(p)+'%';
+    if(p>=100){clearInterval(t);setTimeout(()=>{pre.classList.add('hidden');document.body.style.overflow='';},350);}
+  },110);
+  document.body.style.overflow='hidden';
+})();
+
+/* ---------- Custom cursor ---------- */
+(function(){
+  const dot=document.getElementById('cDot'),ring=document.getElementById('cRing');
+  let mx=0,my=0,rx=0,ry=0;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,.svc,.tst,.case,.step,.result-card,.work-card,.portrait').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('hovering'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('hovering'));
+  });
+})();
+
+/* ---------- Gold dust particles ---------- */
+(function(){
+  const c=document.getElementById('dust'),ctx=c.getContext('2d');
+  let W,H,parts=[];
+  function size(){W=c.width=innerWidth;H=c.height=innerHeight;}
+  size();addEventListener('resize',size);
+  const N=innerWidth<768?35:70;
+  for(let i=0;i<N;i++)parts.push({
+    x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,
+    vy:-(Math.random()*.35+.08),vx:(Math.random()-.5)*.2,
+    a:Math.random()*.5+.15,ph:Math.random()*Math.PI*2
+  });
+  (function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of parts){
+      p.ph+=.02;p.a*= .9995;
+      p.y+=p.vy;p.x+=p.vx+Math.sin(p.ph)*.15;
+      if(p.y<-10){p.y=H+10;p.x=Math.random()*W;p.a=Math.random()*.5+.15;}
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,7);
+      ctx.fillStyle=`rgba(212,175,55,${p.a*(0.6+0.4*Math.sin(p.ph))})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ---------- Nav scroll state ---------- */
+(function(){
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+})();
+
+/* ---------- Mobile menu ---------- */
+(function(){
+  const b=document.getElementById('burger'),m=document.getElementById('mobileMenu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>m.classList.remove('open')));
+})();
+
+/* ---------- Marquee duplicate for seamless loop ---------- */
+(function(){
+  const t=document.getElementById('marqueeTrack');
+  t.innerHTML+=t.innerHTML;
+})();
+
+/* ---------- Scroll reveal ---------- */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+/* ---------- Animated counters ---------- */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,target=+el.dataset.target,dur=1600,start=performance.now();
+      (function tick(now){
+        const k=Math.min(1,(now-start)/dur),ease=1-Math.pow(1-k,3);
+        el.textContent=Math.round(target*ease);
+        if(k<1)requestAnimationFrame(tick);
+      })(start);
+      io.unobserve(el);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(el=>io.observe(el));
+})();
+
+/* ---------- 3D portrait tilt ---------- */
+(function(){
+  const p=document.getElementById('portrait');
+  if(!p||matchMedia('(hover:none)').matches)return;
+  const wrap=p.parentElement;
+  wrap.addEventListener('mousemove',e=>{
+    const r=p.getBoundingClientRect();
+    const dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;
+    p.style.transform=`rotateY(${dx*14}deg) rotateX(${-dy*14}deg) translateZ(10px)`;
+  });
+  wrap.addEventListener('mouseleave',()=>p.style.transform='');
+})();
+
+/* ---------- Hero parallax ---------- */
+(function(){
+  const grid=document.querySelector('.hero-grid');
+  addEventListener('scroll',()=>{
+    const y=scrollY;
+    if(y<innerHeight)grid.style.transform=`translateY(${y*.25}px)`;
+  },{passive:true});
+})();
+
+/* ---------- Copy email toast ---------- */
+(function(){
+  const btn=document.getElementById('copyEmail'),toast=document.getElementById('toast');
+  if(!btn)return;
+  btn.addEventListener('click',()=>{
+    const email='zak3chaz@gmail.com';
+    const done=()=>{toast.textContent='Email copied — talk soon.';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2600);};
+    if(navigator.clipboard){navigator.clipboard.writeText(email).then(done).catch(done);}
+    else done();
+  });
+})();
+</script>
+</body>
+</html>
